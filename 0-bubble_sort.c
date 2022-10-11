@@ -1,44 +1,34 @@
 #include "sort.h"
-#include <stdio.h>
-#include <stdlib.h>
-
 /**
- * bubble_sort - Implementation of bubble_sort
- * @array: array of ints to be sorted
- * @size: size of the array
+ * bubble_sort - sorts bubbly
+ * @array: array to sort
+ * @size: size
  *
- * Return: void
  */
-
 void bubble_sort(int *array, size_t size)
 {
-	/* declare variables */
-	int tmp, i, j;
-	int iter;
+	size_t i, newsize = size;
+	int tmp, swap;
 
-	if (!array)
-	{
-		exit(0);
-	}
+	if (array == NULL || size < 2)
+		return;
 
-	for (i = 0; i < size; i++)
+	while (newsize)
 	{
-		for (j = 0; j < size; j++)
+		swap = 0;
+		for (i = 0; i < newsize - 1; i++)
 		{
-			if (array[j] > array[i])
+			if (array[i] > array[i + 1])
 			{
-				tmp = array[i];
-				array[i] = array[j];
-				array[j] = tmp;
-
-				printf("Array: ");
-				for (iter = 0; iter < size; iter++)
-				{
-					printf("%d ", array[iter]);
-				}
-				printf("\n");
+				tmp = array[i + 1];
+				array[i + 1] = array[i];
+				array[i] = tmp;
+				print_array(array, size);
+				swap = 1;
 			}
 		}
+		newsize--;
+		if (!swap)
+			break;
 	}
-
 }
