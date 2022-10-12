@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 /**
  * prints - prints left, right, and merged halves
  * @arr: original or tmp array
